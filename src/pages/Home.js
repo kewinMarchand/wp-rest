@@ -10,14 +10,14 @@ function Home(props) {
         "line-height: 60px; " +
         "padding: 0 16px;";
     console.groupCollapsed("%c Salut Thomas !!!", styles);
-    // ici on se sert des props passées depuis App.js 
     console.log(props.data)
     console.groupEnd()
-    // templete de la page d'accueil
+    // template de la page d'accueil
     return (
         <div className="Home">
             <h3>Accueil</h3>
             <h4>Les routes disponibles:</h4>
+            {/* ici on se sert de la props data passée depuis App.js */}
             {Object.keys(props.data.routes).map((route, i) => {
                 return (
                     <div key={i}>
