@@ -4,7 +4,7 @@ import './App.css';
 function App() {
   const [data, setData] = useState(null)
   useEffect(() => {
-    fetch("http://wp-rest.alwaysdata.net/wp-json/")
+    fetch("https://wp-rest.alwaysdata.net/wp-json/")
     .then(response => response.json())
     .then(data => setData(data))
   }, []);
