@@ -18,10 +18,10 @@ function Home(props) {
         <div className="Home">
             <h3>Accueil</h3>
             <h4>Les routes disponibles:</h4>
-            {Object.keys(props.data.routes).map(key => {
+            {Object.keys(props.data.routes).map((route, i) => {
                 return (
-                    <div>
-                        <p>{key}</p>
+                    <div key={i}>
+                        <p>{route}</p>
                     </div>
                 )
             })}
