@@ -1,23 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
+  const [data, setData] = useState(null)
+  useEffect(() => {
+    fetch("http://wp-rest.alwaysdata.net/wp-json/")
+    .then(response => response.json())
+    .then(data => setData(data))
+  }, []);
+  
+  if (!data) {
+    return <div>Loading</div> 
+    
+  }
+  console.log(data)
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>{data.name}</h1>
+        <h2>{data.description}</h2>
       </header>
     </div>
   );
