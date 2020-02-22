@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 // Components
-import Loader from '../components/Loader';
+import { Loader } from '../components/Loader';
 
 function Users(props) {
     const [users, setUsers] = useState(null)
@@ -34,4 +34,4 @@ function Users(props) {
     );
 }
 
-export default Users;
+export { Users };

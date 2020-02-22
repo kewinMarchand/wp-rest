@@ -1,16 +1,13 @@
 import React from 'react';
 
 // Router
-import {
-  BrowserRouter as Router,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 
 // CSS
 import '../App.css';
 
 // Components
-import Nav from '../components/Nav'
+import { Nav } from '../components/Nav'
 
 /* 
 dans page layout on définit l'apparence de l'app, on lui passe sa props "children"
@@ -29,4 +26,4 @@ function PageLayout(props) {
 	);
 }
 
-export default PageLayout;
+export { PageLayout };

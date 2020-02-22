@@ -3,11 +3,12 @@ import React, { useEffect, useState } from 'react';
 import { Route } from "react-router-dom";
 
 // Components
-import PageLayout from './layout/PageLayout'
-import Loader from './components/Loader'
-import Header from './components/Header'
-import Home from "./pages/Home"
-import Users from "./pages/Users"
+import { PageLayout } from './layout/PageLayout'
+import { Loader } from './components/Loader'
+import { Header } from './components/Header'
+import { Home } from "./pages/Home"
+import { Posts } from "./pages/Posts"
+import { Users } from "./pages/Users"
 
 function App() {
 	// crée le state "data" et la méthode pour y injecter les données
@@ -40,6 +41,7 @@ function App() {
 				<Header data={data} />
 				{/* une route affiche un composant en fonction de l'url */}
 				<Route exact path="/users" render={() => <Users />} />
+				<Route exact path="/posts" render={() => <Posts />} />
 				<Route exact path="/" render={() => <Home data={data} />} />
 			</>
 		</PageLayout>

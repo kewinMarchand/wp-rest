@@ -13,8 +13,11 @@ function Nav() {
             <NavLink activeStyle={activeStyles} to={"/users"}>
                 Utilisateurs
             </NavLink>
+            <NavLink activeStyle={activeStyles} to={"/posts"}>
+                Articles
+            </NavLink>
         </nav>
 	);
 }
 
-export default Nav;
+export { Nav };

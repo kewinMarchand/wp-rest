@@ -71,3 +71,10 @@ p {
     transform: rotate(360deg);
   }
 }
+
+.Post-excerpt {
+  border: 1px solid #FFF;
+  border-radius: 4px;
+  margin: 3rem;
+  padding: 2rem;
+}
