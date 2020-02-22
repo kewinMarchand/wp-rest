@@ -32,6 +32,20 @@ p {
   margin-bottom: 1rem;
 }
 
+a {
+  text-decoration: none;
+}
+
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  border: 1px solid #FFF;
+  border-radius: 4px;
+  color: white;
+  padding: 8px 16px;
+}
+
 .App {
   background-color: #282c34;
   color: white;
@@ -78,4 +92,17 @@ p {
   color: white;
   margin: 3rem;
   padding: 2rem;
+}
+
+.Post-content-header {
+  margin-bottom: 3rem;
+}
+
+.Post-content-return-container {
+  display: flex;
+  margin-left: 3rem;  
+}
+
+.Post-content h3 {
+  margin-top: 1rem;
 }

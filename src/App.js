@@ -8,6 +8,7 @@ import { Loader } from './components/Loader'
 import { Header } from './components/Header'
 import { Home } from "./pages/Home"
 import { Posts } from "./pages/Posts"
+import { Post } from "./pages/Post"
 import { Users } from "./pages/Users"
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
 				{/* une route affiche un composant en fonction de l'url */}
 				<Route exact path="/users" render={() => <Users />} />
 				<Route exact path="/posts" render={() => <Posts />} />
+				<Route exact path="/post/:id" render={() => <Post />} />
 				<Route exact path="/" render={() => <Home data={data} />} />
 			</>
 		</PageLayout>
