@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
+// Router
+import { Link } from "react-router-dom";
+
 // Components
 import { Loader } from '../components/Loader';
 
@@ -33,12 +36,14 @@ function Posts(props) {
             <h4>Les articles publiés:</h4>
             {posts.map((post, i) => {
                 return (
-                    <div key={i} className="Post-excerpt">
-                        <p>{post.title.rendered}</p>
-                        <p>{(post.excerpt.rendered).replace(/<[^>]*>?/gm, '')}</p>
-                        <span>Publié le {new Date(post.date).toLocaleDateString()} </span>
-                        <span>par {users[post.author - 1].name}</span>
-                    </div>
+                    <Link key={i} to={"/"} >
+                        <div className="Post-excerpt">
+                            <p>{post.title.rendered}</p>
+                            <p>{(post.excerpt.rendered).replace(/<[^>]*>?/gm, '')}</p>
+                            <span>Publié le {new Date(post.date).toLocaleDateString()} </span>
+                            <span>par {users[post.author - 1].name}</span>
+                        </div>
+                    </Link>
                 )
             })}
         </div>

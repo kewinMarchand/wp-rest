@@ -75,6 +75,7 @@ p {
 .Post-excerpt {
   border: 1px solid #FFF;
   border-radius: 4px;
+  color: white;
   margin: 3rem;
   padding: 2rem;
 }
