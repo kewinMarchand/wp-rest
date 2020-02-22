@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
-// Assets
-import logo from './logo.svg';
-
-// CSS
-import './App.css';
+import { Route } from "react-router-dom";
 
 // Components
+import PageLayout from './layout/PageLayout'
+import Loader from './components/Loader'
+import Header from './components/Header'
 import Home from "./pages/Home"
+import Users from "./pages/Users"
 
 function App() {
 	// crée le state "data" et la méthode pour y injecter les données
@@ -19,24 +19,30 @@ function App() {
 		.then(response => response.json())
 		.then(data => setData(data))
 	},
-	// le "[]" sert à ne jouer le fetch qu'au montage du composant, sans lui ce serait joué à chaque rendu
+    // le "[]" sert à ne jouer le fetch qu'au montage du composant, 
+    // sans lui ce serait joué à chaque rendu
 	[]);
 
-	// si il n'y a pas de données on affiche le logo
+	// si il n'y a pas de données on affiche le loader
 	if (!data) {
-		return  <img src={logo} className="App-logo" alt="logo" />
-	}
-
-	// sinon on affiche l'app
+		return  (
+			<PageLayout>
+				<Loader />
+			</PageLayout>
+		)
+    }
+	
 	return (
-		<div className="App">
-			<header className="App-header">
-				<h1>{data.name}</h1>
-				<h2>{data.description}</h2>
-			</header>
-			{/* on passe data au composant header */}
-			<Home data={data} />
-		</div>
+		<PageLayout>
+			{/* la balise vide est un "fragment" qui permet de renvoyer un objet et pas un array */}
+			<>
+				{/* on injecte le composant Header en lui passant la data en props */}
+				<Header data={data} />
+				{/* une route affiche un composant en fonction de l'url */}
+				<Route exact path="/users" render={() => <Users />} />
+				<Route exact path="/" render={() => <Home data={data} />} />
+			</>
+		</PageLayout>
 	);
 }
 

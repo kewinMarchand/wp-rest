@@ -1,17 +1,6 @@
 import React from 'react';
 
 function Home(props) {
-    // tout ça ne sert qu'à afficher le message dans la console
-    const styles =
-        "background: linear-gradient(to left, #B000B5, #BADA55);" +
-        "font-size: 40px;" +
-        "color: #FFF;" +
-        'font-family: "Comic Sans MS", "Comic Sans", cursive;' +
-        "line-height: 60px; " +
-        "padding: 0 16px;";
-    console.groupCollapsed("%c Salut Thomas !!!", styles);
-    console.log(props.data)
-    console.groupEnd()
     // template de la page d'accueil
     return (
         <div className="Home">
