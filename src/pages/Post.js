@@ -49,7 +49,7 @@ function Post(props) {
                 <header className="Post-header">
                     <div className="Post-ctas-container">
                         <GoBackBtn />
-                        <LikesCounter />
+                        <LikesCounter currentPost={currentPost} likes={currentPost.acf.likes} />
                     </div>
                     <span>Publié le {new Date(currentPost.date).toLocaleDateString()}&nbsp;</span>
                     <span>par {store.users[currentPost.author - 1].name}</span>
