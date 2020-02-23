@@ -11,7 +11,10 @@ function LikesCounter() {
             variant={"outlined"}
             onClick={() => setCount(count + 1)}
         >
-           <span style={{marginRight: 8 }}>👍</span>
+           <span
+           role="img"
+           aria-label={"like"}
+           style={{marginRight: 8 }}>👍</span>
            <span>{count}</span>
         </Button>
     );

@@ -19,7 +19,6 @@ function Post(props) {
     [props.match.params.id]);
 
     const [users, setUsers] = useState(null)
-
     useEffect(() => {
         fetch("https://wp-rest.alwaysdata.net/wp-json/wp/v2/users")
         .then(response => response.json())
