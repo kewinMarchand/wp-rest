@@ -9,6 +9,7 @@ import { Header } from './components/Header'
 import { Home } from "./pages/Home"
 import { Posts } from "./pages/Posts"
 import { Post } from "./pages/Post"
+import { Roads } from "./pages/Roads"
 import { Users } from "./pages/Users"
 
 function App() {
@@ -44,7 +45,8 @@ function App() {
 				<Route exact path="/users" render={() => <Users />} />
 				<Route exact path="/posts" render={() => <Posts />} />
 				<Route exact path="/post/:id" render={() => <Post />} />
-				<Route exact path="/" render={() => <Home data={data} />} />
+				<Route exact path="/roads" render={() => <Roads data={data} />} />
+				<Route exact path="/" render={() => <Home />} />
 			</>
 		</PageLayout>
 	);

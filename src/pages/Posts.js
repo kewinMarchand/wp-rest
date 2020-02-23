@@ -29,6 +29,7 @@ function Posts() {
     
     console.log(posts)
 
+    // template de la liste des articles
     return (
         <div className="Posts">
             <h3>Articles</h3>
