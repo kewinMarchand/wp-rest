@@ -16,6 +16,9 @@ function Nav() {
             <NavLink activeStyle={activeStyles} to={"/posts"}>
                 Articles
             </NavLink>
+            <NavLink activeStyle={activeStyles} to={"/roads"}>
+                Routes
+            </NavLink>
         </nav>
 	);
 }

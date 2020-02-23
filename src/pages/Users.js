@@ -18,7 +18,7 @@ function Users(props) {
     
     console.log(users)
 
-    // template de la page d'accueil
+    // template de la page des utilisateurs
     return (
         <div className="Users">
             <h3>Utilisateurs</h3>

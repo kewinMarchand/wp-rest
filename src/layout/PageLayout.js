@@ -19,8 +19,10 @@ function PageLayout(props) {
 	return (
 		<div className="App">
 			<Router>
-				<Nav />
-				{props.children}
+				<>
+					<Nav />
+					{props.children}
+				</>
 			</Router>
 		</div>
 	);

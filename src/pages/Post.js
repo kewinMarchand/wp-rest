@@ -29,7 +29,7 @@ function Post(props) {
     
     console.log(props, post)
 
-    // template de la page d'accueil
+    // template des articles
     return (
         <div className="Post">
             <div className="Post-content">
