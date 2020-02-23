@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
+
+// Stores
+import { Context } from "../contexts/store";
 
 // Router
 import { withRouter } from "react-router";
@@ -9,29 +12,35 @@ import { GoBackBtn } from '../components/GoBackBtn';
 import { LikesCounter } from '../components/LikesCounter';
 
 function Post(props) {
-    const [post, setPost] = useState(null)
-	useEffect(() => {
-		fetch("https://wp-rest.alwaysdata.net/wp-json/wp/v2/posts/" + props.match.params.id )
-		.then(response => response.json())
-        .then(post => setPost(post))
-        .catch(error => console.log("Quelque chose s'est mal passé: ", error))
-    },
-    [props.match.params.id]);
+    const { store, dispatch } = useContext(Context);
 
-    const [users, setUsers] = useState(null)
     useEffect(() => {
-        fetch("https://wp-rest.alwaysdata.net/wp-json/wp/v2/users")
+        !store.posts &&
+		fetch("https://wp-rest.alwaysdata.net/wp-json/wp/v2/posts")
         .then(response => response.json())
-        .then(users => setUsers(users))
+        .then(posts => dispatch({ type: "set_posts", payload: posts }))
         .catch(error => console.log("Quelque chose s'est mal passé: ", error))
     },
-    []);
-
-    if (!post || !users) {
+    [store.posts, dispatch]);
+    
+	useEffect(() => {
+        !store.users &&
+		fetch("https://wp-rest.alwaysdata.net/wp-json/wp/v2/users")
+        .then(response => response.json())
+        .then(users => dispatch({ type: "set_users", payload: users }))
+        .catch(error => console.log("Quelque chose s'est mal passé: ", error))
+    },
+	[store.users, dispatch]);
+    
+    if (!store.posts || !store.users) {
 		return <Loader />
     }
-    
-    console.log(props, post, users)
+
+    console.log(props, store.posts, store.users)
+
+    const currentPost = store.posts.find(storedPost => storedPost.id === parseInt(props.match.params.id))
+
+    console.log(currentPost)
 
     // template des articles
     return (
@@ -42,11 +51,14 @@ function Post(props) {
                         <GoBackBtn />
                         <LikesCounter />
                     </div>
-                    <span>Publié le {new Date(post.date).toLocaleDateString()}&nbsp;</span>
-                    <span>par {users[post.author - 1].name}</span>
-                    <h3>{post.title.rendered}</h3>
+                    <span>Publié le {new Date(currentPost.date).toLocaleDateString()}&nbsp;</span>
+                    <span>par {store.users[currentPost.author - 1].name}</span>
+                    <h3>{currentPost.title.rendered}</h3>
                 </header>
-                <div className="Post-content" dangerouslySetInnerHTML={{__html: post.content.rendered}}/>
+                <div
+                    className="Post-content"
+                    dangerouslySetInnerHTML={{__html: currentPost.content.rendered}}
+                />
             </div>
              
         </div>

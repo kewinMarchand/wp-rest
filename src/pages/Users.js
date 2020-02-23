@@ -1,30 +1,35 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+
+// Stores
+import { Context } from "../contexts/store";
 
 // Components
 import { Loader } from '../components/Loader';
 
 function Users(props) {
-    const [users, setUsers] = useState(null)
+    const { store, dispatch } = useContext(Context);
+
 	useEffect(() => {
+        !store.users &&
 		fetch("https://wp-rest.alwaysdata.net/wp-json/wp/v2/users")
-		.then(response => response.json())
-		.then(users => setUsers(users))
+        .then(response => response.json())
+        .then(users => dispatch({ type: "set_users", payload: users }))
         .catch(error => console.log("Quelque chose s'est mal passé: ", error))
     },
-	[]);
+    [store.users, dispatch]);
 
-    if (!users) {
+    if (!store.users) {
 		return <Loader />
     }
     
-    console.log(users)
+    console.log(store.users)
 
     // template de la page des utilisateurs
     return (
         <div className="Users">
             <h3>Utilisateurs</h3>
             <h4>Les utilisateurs actifs:</h4>
-            {users.map((user, i) => {
+            {store.users.map((user, i) => {
                 return (
                     <div key={i}>
                         <p>{user.name}</p>

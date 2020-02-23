@@ -1,36 +1,39 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
+
+// Stores
+import { Context } from "../contexts/store";
 
 // Components
 import { Loader } from '../components/Loader';
 import { Image } from '../components/Image';
 
-function Home(props) {
-    const [pages, setPages] = useState(null)
+function Home() {
+    const { store, dispatch } = useContext(Context);
+
     useEffect(() => {
+        !store.pages &&
         fetch("https://wp-rest.alwaysdata.net/wp-json/wp/v2/pages")
         .then(response => response.json())
-        .then(pages => setPages(pages))
+        .then(pages => dispatch({ type: "set_pages", payload: pages }))
         .catch(error => console.log("Quelque chose s'est mal passé: ", error))
     },
-    []);
+    [store.pages, dispatch]);
 
-    const [medias, setMedias] = useState(null)
     useEffect(() => {
+        !store.medias &&
         fetch("https://wp-rest.alwaysdata.net/wp-json/wp/v2/media")
         .then(response => response.json())
-        .then(medias => setMedias(medias))
+        .then(medias => dispatch({ type: "set_medias", payload: medias }))
         .catch(error => console.log("Quelque chose s'est mal passé: ", error))
     },
-    []);
-
-    if (!pages || !medias) {
+    [store.medias, dispatch]);
+    
+    if (!store.pages || !store.medias) {
 		return <Loader />
     }
 
-    console.log(pages, medias)
-
-    const homepage = pages.find(page => "accueil" === page.slug)
-    const homepageMedia = medias.find(media => homepage.featured_media === media.id)
+    const homepage = store.pages.find(page => "accueil" === page.slug)
+    const homepageMedia = store.medias.find(media => homepage.featured_media === media.id)
     
     console.log(homepage, homepageMedia)
 
