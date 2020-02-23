@@ -39,7 +39,7 @@ function Posts() {
                     <Link key={i} to={"/post/" + post.id} >
                         <div className="Post-excerpt">
                             <p>{post.title.rendered}</p>
-                            <p>{(post.excerpt.rendered).replace(/<[^>]*>?/gm, '')}</p>
+                            <div dangerouslySetInnerHTML={{__html: post.excerpt.rendered}}/>
                             <span>Publié le {new Date(post.date).toLocaleDateString()}&nbsp;</span>
                             <span>par {users[post.author - 1].name}</span>
                         </div>

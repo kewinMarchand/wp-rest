@@ -43,7 +43,7 @@ function Post(props) {
                     <span>par {users[post.author - 1].name}</span>
                     <h3>{post.title.rendered}</h3>
                 </header>
-                <p>{(post.content.rendered).replace(/<[^>]*>?/gm, '')}</p>
+                <div dangerouslySetInnerHTML={{__html: post.content.rendered}}/>
             </div>
              
         </div>
