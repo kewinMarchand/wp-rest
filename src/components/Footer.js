@@ -1,8 +1,5 @@
 import React from 'react';
 
-// Router
-import { NavLink } from "react-router-dom";
-
 function Footer() {
 	return (
         <nav className="App-footer">

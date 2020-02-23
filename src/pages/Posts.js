@@ -12,6 +12,7 @@ function Posts() {
 		fetch("https://wp-rest.alwaysdata.net/wp-json/wp/v2/posts")
 		.then(response => response.json())
 		.then(posts => setPosts(posts))
+        .catch(error => console.log("Quelque chose s'est mal passé: ", error))
     },
     []);
     
@@ -20,6 +21,7 @@ function Posts() {
 		fetch("https://wp-rest.alwaysdata.net/wp-json/wp/v2/users")
 		.then(response => response.json())
 		.then(users => setUsers(users))
+        .catch(error => console.log("Quelque chose s'est mal passé: ", error))
     },
 	[]);
 

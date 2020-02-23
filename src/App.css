@@ -1,3 +1,5 @@
+/* Reset */
+
 * {
   margin: 0;
   padding: 0;
@@ -6,6 +8,10 @@
 html {
   font-size: 10px;
 }
+
+
+
+/* Typography */
 
 h1 {
   font-size: 2.4rem;
@@ -46,6 +52,10 @@ button {
   padding: 8px 16px;
 }
 
+
+
+/* Layout */
+
 .App {
   background-color: #282c34;
   color: white;
@@ -84,6 +94,10 @@ button {
   margin-top: 4rem;
 }
 
+
+
+/* Loader */
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -99,6 +113,10 @@ button {
   }
 }
 
+
+
+/* Posts list */
+
 .Post-excerpt {
   border: 1px solid #FFF;
   border-radius: 4px;
@@ -107,15 +125,27 @@ button {
   padding: 2rem;
 }
 
-.Post-content-header {
+
+
+/* Single post */
+
+.Post-header {
   margin-bottom: 3rem;
 }
 
-.Post-content-return-container {
+.Post-ctas-container {
   display: flex;
-  margin-left: 3rem;  
+  justify-content: space-between;
 }
 
-.Post-content h3 {
+.Post-ctas-container button {
+  font-size: 1.6rem;
+}
+
+.Post h3 {
   margin-top: 1rem;
+}
+
+.Post-content {
+  text-align: justify;
 }
