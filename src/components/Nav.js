@@ -4,7 +4,7 @@ import React from 'react';
 import { NavLink } from "react-router-dom";
 
 function Nav() {
-    const activeStyles = { fontWeight: "bold", textDecoration: "underline" }
+    const activeStyles = { borderBottom: "1px solid #FFF", fontWeight: 700 }
 	return (
         <nav className="App-nav">
             <NavLink exact activeStyle={activeStyles} to={"/"}>

@@ -8,7 +8,7 @@ import '../App.css';
 
 // Components
 import { Nav } from '../components/Nav'
-
+import { Footer } from '../components/Footer'
 /* 
 dans page layout on définit l'apparence de l'app, on lui passe sa props "children"
 ici ce sera nos pages
@@ -21,7 +21,10 @@ function PageLayout(props) {
 			<Router>
 				<>
 					<Nav />
-					{props.children}
+					<main className="App-main">
+						{props.children}
+					</main>
+					<Footer />
 				</>
 			</Router>
 		</div>
