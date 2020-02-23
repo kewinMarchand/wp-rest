@@ -95,7 +95,7 @@ Pour pousser le commit sur GitHub.
 
 ---
 
-Si il y a des conflits (changements apportés à master depuis le pull)
+*Si il y a des conflits (changements apportés à master depuis le pull).*
 
 #### `git checkout master`
 
@@ -117,7 +117,7 @@ Pour retourner sur la branche créée.
 
 #### `git rebase master`
 
-Pour voir ce qui conflicte
+Pour voir ce qui conflicte.
 
 *Résolution des conflits, commit*
 
@@ -125,10 +125,10 @@ Pour voir ce qui conflicte
 
 #### `git rebase --continue`
 
-Tant qu'il reste des conflits
+Tant qu'il reste des conflits.
 
 ---
 
 #### `git push -f`
 
-Pour pousser en force sur GitHub
+Pour pousser en force sur GitHub.
