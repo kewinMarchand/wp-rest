@@ -5,6 +5,7 @@ import { withRouter } from "react-router";
 
 // Components
 import { Loader } from '../components/Loader';
+import { GoBackBtn } from '../components/GoBackBtn';
 
 function Post(props) {
     const [post, setPost] = useState(null)
@@ -35,9 +36,7 @@ function Post(props) {
             <div className="Post-content">
                 <header className="Post-content-header">
                     <div className="Post-content-return-container">
-                        <button onClick={() => props.history.goBack()}>
-                            ⟵ Retour
-                        </button>
+                        <GoBackBtn />
                     </div>
                     <span>Publié le {new Date(post.date).toLocaleDateString()}&nbsp;</span>
                     <span>par {users[post.author - 1].name}</span>
@@ -52,6 +51,6 @@ function Post(props) {
 
 // with router permet de récupérer les paramètres de l'url, 
 // ici l'id du post à afficher
-const PostWithRouter = withRouter(Post);
+const ComponentWithRouter = withRouter(Post);
 
-export { PostWithRouter as Post };
+export { ComponentWithRouter as Post };

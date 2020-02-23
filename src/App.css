@@ -49,6 +49,8 @@ button {
 .App {
   background-color: #282c34;
   color: white;
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
   text-align: center;
 }
@@ -66,9 +68,20 @@ button {
   text-decoration: none;
 }
 
+.App-main {
+  flex-grow: 1;
+  margin: auto;
+  max-width: 80vw;
+}
+
 .App-header {
   margin-bottom: 3rem;
   margin-top: 2rem;
+}
+
+.App-footer {
+  height: 4rem;
+  margin-top: 4rem;
 }
 
 @media (prefers-reduced-motion: no-preference) {
