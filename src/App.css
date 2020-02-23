@@ -115,6 +115,15 @@ button {
 
 
 
+/* Image */
+.Image {
+  height: auto; 
+  max-width: 100%;
+}
+
+
+
+/* Home */
 .Home-content {
   margin-top: 4rem;
 
