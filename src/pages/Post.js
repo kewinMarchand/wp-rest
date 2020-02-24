@@ -44,6 +44,15 @@ function Post(props) {
 
     console.log(currentPost)
 
+
+
+// TOM
+
+const article = store.pages.find(page => "posts" === page.slug)
+const articleMedia = store.medias.find(media => article.featured_media === media.id)
+
+
+
     // template des articles
     return (
         <div className="Post">
@@ -60,7 +69,7 @@ function Post(props) {
                 <div
                     className="Post-content"
                     dangerouslySetInnerHTML={{__html: currentPost.content.rendered}}
-                /> <Image image={homepageMedia} />
+                /> <Image image={articleMedia} />
             </div>
              
         </div>
