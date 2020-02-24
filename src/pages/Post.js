@@ -10,6 +10,8 @@ import { withRouter } from "react-router";
 import { Loader } from '../components/Loader';
 import { GoBackBtn } from '../components/GoBackBtn';
 import { LikesCounter } from '../components/LikesCounter';
+import { Image } from '../components/Image';
+
 
 function Post(props) {
     const { store, dispatch } = useContext(Context);
@@ -58,7 +60,7 @@ function Post(props) {
                 <div
                     className="Post-content"
                     dangerouslySetInnerHTML={{__html: currentPost.content.rendered}}
-                />
+                /> <Image image={homepageMedia} />
             </div>
              
         </div>
