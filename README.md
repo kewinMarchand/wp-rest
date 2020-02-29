@@ -13,7 +13,7 @@ Elle est hébergée par [alwaysdata](https://www.alwaysdata.com/fr/).
 
 ### Front
 
-L'app est [à cette adresse](https://jolly-tereshkova-ca4b7e.netlify.com/).
+L'app est [à cette adresse](http://wp-rest.alwaysdata.net/) ou [à celle-ci](https://jolly-tereshkova-ca4b7e.netlify.com/).
 
 Elle est hébergée par [netlify](https://www.netlify.com/).
 
