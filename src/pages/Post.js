@@ -19,6 +19,7 @@ function Post(props) {
     // c'est assez complexe pour le moment
     const { store, dispatch } = useContext(Context);
 
+    // on récupère l'objet "posts" si il n'est pas disponible
     useEffect(() => {
         // On ne va chercher la donnée que si elle n'est pas déjà présente dans le store
         // On fait la même requête sur la page des articles donc en théorie on l'a
@@ -38,6 +39,7 @@ function Post(props) {
     // si elles changent la fonction se rejoue
     [store.posts, dispatch]);
 
+    // on récupère l'objet "users" si il n'est pas disponible
 	useEffect(() => {
         !store.users &&
 		fetch("https://wp-rest.alwaysdata.net/wp-json/wp/v2/users")
@@ -47,13 +49,26 @@ function Post(props) {
     },
     [store.users, dispatch]);
     
-    if (!store.posts || !store.users) {
+    // on récupère l'objet "medias" si il n'est pas disponible
+    useEffect(() => {
+        !store.medias &&
+        fetch("https://wp-rest.alwaysdata.net/wp-json/wp/v2/media")
+        .then(response => response.json())
+        .then(medias => dispatch({ type: "set_medias", payload: medias }))
+        .catch(error => console.log("Quelque chose s'est mal passé: ", error))
+    },
+    [store.medias, dispatch]);
+
+    // tant qu'on a pas toutes nos infos on affiche le loader
+    if (!store.posts || !store.users || !store.medias) {
+        // le return fait que le code en dessous n'est pas lu
 		return <Loader />
     }
 
-    console.log("store", store)
+    // quand on les a on peut continuer
     console.log("store.posts", store.posts)
     console.log("store.users", store.users)
+    console.log("store.medias", store.medias)
 
     // props.match.params.id est l'id de l'article récupéré dans l'url grace à withRouter() 
     // qui nous met à dispositon certaines props utiles comme history, location, match...
@@ -69,17 +84,8 @@ function Post(props) {
     // find() boucle sur un tableau, storedPost est chaque element du tableau passé en argument à la fonction
     // currentPost = le premier post du store dont l'id est égal à l'argument de l'url
     const currentPost = store.posts.find(storedPost => storedPost.id === parseInt(props.match.params.id))
-    
     console.log("currentPost", currentPost)
-
-
-    console.log("store.pages existe ?", null !== store.pages)
-    console.log("store.medias existe ?", null !== store.medias)
-
-// TOM
-
-const article = store.pages.find(page => "posts" === page.slug)
-const articleMedia = store.medias.find(media => article.featured_media === media.id)
+    const articleMedia = store.medias.find(media => currentPost.featured_media === media.id)
 
     // template des articles
     return (
@@ -94,10 +100,12 @@ const articleMedia = store.medias.find(media => article.featured_media === media
                     <span>par {store.users[currentPost.author - 1].name}</span>
                     <h3>{currentPost.title.rendered}</h3>
                 </header>
+                {/* on affiche l'image que si il y en a une */}
+                {null !== articleMedia && <Image image={articleMedia} />}
                 <div
                     className="Post-content"
                     dangerouslySetInnerHTML={{__html: currentPost.content.rendered}}
-                /> <Image image={articleMedia} />
+                /> 
             </div>
              
         </div>
