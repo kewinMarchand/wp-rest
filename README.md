@@ -127,6 +127,10 @@ Pour voir ce qui conflicte.
 
 Tant qu'il reste des conflits.
 
+
+👋
+
+
 ---
 
 #### `git push -f`
