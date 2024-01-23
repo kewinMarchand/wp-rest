@@ -26,7 +26,7 @@ function Post(props) {
         // !store.posts && veut dire: si store.posts est nul, alors
         !store.posts &&
         // On va chercher les données à cette url
-        fetch("https://wp-rest.alwaysdata.net/wp-json/wp/v2/posts")
+        fetch("https://kewin-purjus.alwaysdata.net/wp-json//wp/v2/posts")
         // quand on a une réponse on la transforme en json
         .then(response => response.json())
         // quand c'est fait on envoie le json dans notre store
@@ -41,7 +41,7 @@ function Post(props) {
     // on récupère l'objet "users" si il n'est pas disponible
 	useEffect(() => {
         !store.users &&
-		fetch("https://wp-rest.alwaysdata.net/wp-json/wp/v2/users")
+		fetch("https://kewin-purjus.alwaysdata.net/wp-json//wp/v2/users")
         .then(response => response.json())
         .then(users => dispatch({ type: "set_users", payload: users }))
         .catch(error => console.log("Quelque chose s'est mal passé: ", error))
@@ -51,7 +51,7 @@ function Post(props) {
     // on récupère l'objet "medias" si il n'est pas disponible
     useEffect(() => {
         !store.medias &&
-        fetch("https://wp-rest.alwaysdata.net/wp-json/wp/v2/media")
+        fetch("https://kewin-purjus.alwaysdata.net/wp-json//wp/v2/media")
         .then(response => response.json())
         .then(medias => dispatch({ type: "set_medias", payload: medias }))
         .catch(error => console.log("Quelque chose s'est mal passé: ", error))
