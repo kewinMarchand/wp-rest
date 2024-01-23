@@ -12,7 +12,7 @@ function Home() {
 
     useEffect(() => {
         !store.pages &&
-        fetch("https://kewin-purjus.alwaysdata.net/wp-json//wp/v2/pages")
+        fetch("https://kewin-purjus.alwaysdata.net/wp-json/wp/v2/pages")
         .then(response => response.json())
         .then(pages => dispatch({ type: "set_pages", payload: pages }))
         .catch(error => console.log("Quelque chose s'est mal passé: ", error))
@@ -21,7 +21,7 @@ function Home() {
 
     useEffect(() => {
         !store.medias &&
-        fetch("https://kewin-purjus.alwaysdata.net/wp-json//wp/v2/media")
+        fetch("https://kewin-purjus.alwaysdata.net/wp-json/wp/v2/media")
         .then(response => response.json())
         .then(medias => dispatch({ type: "set_medias", payload: medias }))
         .catch(error => console.log("Quelque chose s'est mal passé: ", error))

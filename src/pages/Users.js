@@ -11,7 +11,7 @@ function Users(props) {
 
 	useEffect(() => {
         !store.users &&
-		fetch("https://kewin-purjus.alwaysdata.net/wp-json//wp/v2/users")
+		fetch("https://kewin-purjus.alwaysdata.net/wp-json/wp/v2/users")
         .then(response => response.json())
         .then(users => dispatch({ type: "set_users", payload: users }))
         .catch(error => console.log("Quelque chose s'est mal passé: ", error))
