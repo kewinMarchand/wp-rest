@@ -18,7 +18,7 @@ function App() {
 	
 	// au chargement du composant on va chercher les données et on les injecte dans le state
 	useEffect(() => {
-		fetch("https://wp-rest.alwaysdata.net/wp-json/")
+		fetch("https://kewin-purjus.alwaysdata.net/wp-json/")
 		// transforme la réponse en JSON
 		.then(response => response.json())
 		.then(data => setData(data))
