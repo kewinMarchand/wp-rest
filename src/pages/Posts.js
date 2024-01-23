@@ -14,7 +14,7 @@ function Posts() {
 
 	useEffect(() => {
         !store.posts &&
-		fetch("https://kewin-purjus.alwaysdata.net/wp-json//wp/v2/posts")
+		fetch("https://kewin-purjus.alwaysdata.net/wp-json/wp/v2/posts")
         .then(response => response.json())
         .then(posts => dispatch({ type: "set_posts", payload: posts }))
         .catch(error => console.log("Quelque chose s'est mal passé: ", error))
@@ -23,7 +23,7 @@ function Posts() {
     
 	useEffect(() => {
         !store.users &&
-		fetch("https://kewin-purjus.alwaysdata.net/wp-json//wp/v2/users")
+		fetch("https://kewin-purjus.alwaysdata.net/wp-json/wp/v2/users")
         .then(response => response.json())
         .then(users => dispatch({ type: "set_users", payload: users }))
         .catch(error => console.log("Quelque chose s'est mal passé: ", error))
