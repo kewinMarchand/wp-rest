@@ -7,13 +7,13 @@ Cette application [React](https://fr.reactjs.org/docs/getting-started.html) util
 
 ### Admin
 
-L'admin wordpress est [à cette adresse](http://wp-rest.alwaysdata.net/wp-admin).
+L'admin wordpress est [à cette adresse](https://kewin-purjus.alwaysdata.net/wp-admin/).
 
 Elle est hébergée par [alwaysdata](https://www.alwaysdata.com/fr/).
 
 ### Front
 
-L'app est [à cette adresse](http://wp-rest.alwaysdata.net/) ou [à celle-ci](https://jolly-tereshkova-ca4b7e.netlify.com/).
+L'app est en version Wordpress [à cette adresse](https://kewin-purjus.alwaysdata.net/) et version SPA react [à celle-ci](https://master--jolly-tereshkova-ca4b7e.netlify.app/).
 
 Elle est hébergée par [netlify](https://www.netlify.com/).
 
