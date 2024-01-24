@@ -76,8 +76,27 @@ img {
 .App-nav {
   align-items: center;
   display: flex;
-  justify-content: space-evenly;
-  height: 4rem;
+  justify-content: space-between;
+  padding: 16px 0;
+  margin: auto;
+  max-width: 80vw;
+  width: 100%;
+}
+
+.App-nav-links {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  list-style: none;
+}
+
+.App-nav picture {
+  border-radius: 50%;
+  display: flex;
+  height: 48px;
+  overflow: hidden;
+  width: 48px;
 }
 
 .App-nav a {
@@ -90,6 +109,7 @@ img {
   flex-grow: 1;
   margin: auto;
   max-width: 80vw;
+  width: 100%;
 }
 
 .App-header {
@@ -141,12 +161,44 @@ img {
 
 /* Posts list */
 
+.Posts-list {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 12px;
+  margin-top: 48px;
+  width: 100%;
+  @media screen and (min-width: 768px) {
+    grid-gap: 48px;
+  }
+}
+
+.Posts-list > * {
+  grid-column: span 12;
+  @media screen and (min-width: 768px) {
+    grid-column: span 6;
+  }
+  @media screen and (min-width: 1200px) {
+    grid-column: span 4;
+  }
+  @media screen and (min-width: 1920px) {
+    grid-column: span 3;
+  }
+}
+
 .Post-excerpt {
   border: 1px solid #FFF;
   border-radius: 4px;
+  box-sizing: border-box;
   color: white;
-  margin: 3rem;
-  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 24px;
+}
+
+
+.Post-excerpt :nth-child(2) {
+  flex-grow: 1;
 }
 
 
@@ -172,4 +224,11 @@ img {
 
 .Post-content {
   text-align: justify;
+}
+
+.Users-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px;
+  padding-top: 96px;
 }

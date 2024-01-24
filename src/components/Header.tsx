@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Header(props) {
+function Header(props: any) {
     // tout ça ne sert qu'à afficher le message dans la console
     const styles =
         "background: linear-gradient(to left, #B000B5, #BADA55);" +

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Image(props) {
+function Image(props: any) {
     return (
         <img
             className="Image"

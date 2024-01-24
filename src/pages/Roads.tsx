@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Roads(props) {
+function Roads(props: { data: { routes: {}; }; }) {
 
     console.log(props)
 
@@ -9,7 +9,7 @@ function Roads(props) {
         <div className="Roads">
             <h3>Routes</h3>
             <h4>Les routes disponibles:</h4>
-            {/* ici on se sert de la props data passée depuis App.js */}
+            {/* ici on se sert de la props data passée depuis App.tsx */}
             {Object.keys(props.data.routes).map((route, i) => {
                 return (
                     <div key={i}>
@@ -21,4 +21,4 @@ function Roads(props) {
     );
 }
 
-export { Roads };
+export {Roads};
