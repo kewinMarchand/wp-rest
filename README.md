@@ -65,6 +65,12 @@ Pour travailler sur la branche créée.
 
 ---
 
+#### `git checkout -B mabranche`
+
+Pour créer une branche en local et travailler sur la branche créée.
+
+---
+
 #### `git push --set-upstream origin mabranche`
 
 Pour pousser la branche sur GitHub.

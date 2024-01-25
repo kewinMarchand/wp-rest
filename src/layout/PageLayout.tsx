@@ -1,0 +1,49 @@
+import React, {ReactElement} from 'react';
+import {ContextProvider} from "../contexts/store";
+
+// Router
+import {BrowserRouter as Router} from "react-router-dom";
+
+// CSS
+import '../App.css';
+
+// Components
+import {Nav} from '../components/Nav'
+import {Footer} from '../components/Footer'
+import {Helmet} from "react-helmet";
+import type {Data} from "../client/types/data";
+
+/* 
+dans page layout on définit l'apparence de l'app, on lui passe sa props "children"
+ici ce sera nos pages
+On gére aussi les metas de la page avec Helmet
+*/
+const PageLayout = ({children, data}: { children: ReactElement | ReactElement[], data?: Data }) => {
+    return (
+        <>
+            {data &&
+                <Helmet>
+                    <title>{data.name}</title>
+                    <meta name="description" content={data.description}/>
+                    <link rel="canonical" href={data.url}/>
+                    <link rel="icon" href={data.site_icon_url}/>
+                </Helmet>
+            }
+            <div className="App">
+                <ContextProvider>
+                    <Router>
+                        <>
+                            <Nav data={data}/>
+                            <main className="App-main">
+                                {children}
+                            </main>
+                            <Footer/>
+                        </>
+                    </Router>
+                </ContextProvider>
+            </div>
+        </>
+    );
+}
+
+export {PageLayout};
