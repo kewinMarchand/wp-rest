@@ -28,9 +28,11 @@ function Users() {
     // template de la page des utilisateurs
     return (
         <div className="Users">
-            <h3>Utilisateurs</h3>
-            <h4>Les utilisateurs actifs:</h4>
-            <div className="Users-list">
+            <header>
+                <h1>Utilisateurs</h1>
+                <h2>Les utilisateurs actifs:</h2>
+            </header>
+            <section className="Users-list">
                 {users.map((user, i) => {
                     return (
                         <div key={i}>
@@ -42,7 +44,7 @@ function Users() {
                         </div>
                     )
                 })}
-            </div>
+            </section>
         </div>
     );
 }

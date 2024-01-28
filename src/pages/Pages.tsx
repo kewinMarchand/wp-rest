@@ -8,19 +8,19 @@ import {Link} from "react-router-dom";
 
 // Components
 import {Loader} from '../components/Loader';
-import {getPosts, getUsers} from "../client/apiConsumer";
+import {getPages, getUsers} from "../client/apiConsumer";
 
-function Posts() {
-    const {store: {posts, users}, dispatch} = useContext(AppContext);
+function Pages() {
+    const {store: {pages, users}, dispatch} = useContext(AppContext);
 
     useEffect(() => {
-            if (null !== posts) {
+            if (null !== pages) {
                 return
             }
-            getPosts()
-                .then(posts => dispatch({type: "set_posts", payload: posts}))
+            getPages()
+                .then(pages => dispatch({type: "set_pages", payload: pages}))
         },
-        [posts, dispatch]);
+        [pages, dispatch]);
 
     useEffect(() => {
             if (null !== users) {
@@ -31,28 +31,28 @@ function Posts() {
         },
         [users, dispatch]);
 
-    if (!posts || !users) {
+    if (!pages || !users) {
         return <Loader/>
     }
 
-    console.log(posts)
+    console.log(pages)
 
     // template de la liste des articles
     return (
         <div className="Posts">
             <header>
-                <h1>Articles</h1>
-                <h2>Les articles publiés:</h2>
+                <h1>Pages</h1>
+                <h2>Les pages publiés:</h2>
             </header>
             <section className="Posts-list">
-                {posts.map((post, i) => {
+                {pages.map((page, i) => {
                     return (
-                        <Link key={post.id} to={"/post/" + post.id}>
+                        <Link key={page.id} to={"/page/" + page.id}>
                             <div className="Post-excerpt">
-                                <p>{post.title.rendered}</p>
-                                <div dangerouslySetInnerHTML={{__html: post.excerpt.rendered}}/>
-                                <span>Publié le {new Date(post.date).toLocaleDateString()}&nbsp;</span>
-                                <span>par {users[post.author - 1].name}</span>
+                                <p>{page.title.rendered}</p>
+                                <div dangerouslySetInnerHTML={{__html: page.excerpt.rendered}}/>
+                                <span>Publié le {new Date(page.date).toLocaleDateString()}&nbsp;</span>
+                                <span>par {users[page.author - 1].name}</span>
                             </div>
                         </Link>
                     )
@@ -62,4 +62,4 @@ function Posts() {
     );
 }
 
-export {Posts};
+export {Pages};

@@ -36,14 +36,20 @@ function Home() {
         return <Loader/>
     }
 
-    console.log(homepage, homepageMedia)
+    console.log({homepage})
 
     // template de la page d'accueil
     return (
         <div className="Home">
-            <h3>{homepage.title.rendered}</h3>
-            <Image image={homepageMedia}/>
-            <div className="Home-content" dangerouslySetInnerHTML={{__html: homepage.content.rendered}}/>
+            <header>
+                <h1 className="Home-title">{homepage.title.rendered}</h1>
+            </header>
+            <section className="grid pt-6">
+                <picture className="grid-col-12">
+                    <Image image={homepageMedia}/>
+                </picture>
+                <div className="Home-content container-small pt-6" dangerouslySetInnerHTML={{__html: homepage.content.rendered}}/>
+            </section>
         </div>
     );
 }
