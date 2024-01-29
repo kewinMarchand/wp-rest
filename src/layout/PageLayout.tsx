@@ -27,6 +27,11 @@ const PageLayout = ({children, data}: { children: ReactElement | ReactElement[],
                     <meta name="description" content={data.description}/>
                     <link rel="canonical" href={data.url}/>
                     <link rel="icon" href={data.site_icon_url}/>
+                    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+                    <link rel="preconnect" href="https://fonts.gstatic.com"/>
+                    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400&display=swap" rel="stylesheet"/>
+
+                    
                 </Helmet>
             }
             <div className="App">
