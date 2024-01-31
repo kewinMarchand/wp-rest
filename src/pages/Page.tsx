@@ -13,23 +13,23 @@ import {Image} from '../components/Image';
 import {getMedias, getPosts, getUsers} from "../client/apiConsumer";
 
 
-function Post() {
+function Page() {
     // dans certains composants j'utilise useState() qui crée une variable et la méthode pour la modifier
     // ici on a souvent besoin des données donc je les stocke dans un store qui est accessible dans toute l'appli grâce à useContext
     // c'est assez complexe pour le moment
-    const {store: {posts, users, medias}, dispatch} = useContext(AppContext);
+    const {store: {pages, users, medias}, dispatch} = useContext(AppContext);
 
     const { id } = useParams();
 
-    // on récupère l'objet "posts" si il n'est pas disponible
+    // on récupère l'objet "pages" si il n'est pas disponible
     useEffect(() => {
-            if (null !== posts) {
+            if (null !== pages) {
                 return
             }
             getPosts()
-                .then(posts => dispatch({type: "set_posts", payload: posts}))
+                .then(pages => dispatch({type: "set_posts", payload: pages}))
         },
-        [posts, dispatch]);
+        [pages, dispatch]);
 
     // on récupère l'objet "users" si il n'est pas disponible
     useEffect(() => {
@@ -52,13 +52,13 @@ function Post() {
         [medias, dispatch]);
 
     // tant qu'on a pas toutes nos infos on affiche le loader
-    if (!posts || !users || !medias) {
+    if (!pages || !users || !medias) {
         // le return fait que le code en dessous n'est pas lu
         return <Loader/>
     }
 
     // quand on les a on peut continuer
-    console.log("store.posts", posts)
+    console.log("store.posts", pages)
     console.log("store.users", users)
     console.log("store.medias", medias)
 
@@ -67,11 +67,11 @@ function Post() {
     // currentPost = le premier post de store.posts qui répond à la condition
     // find() boucle sur un tableau, storedPost est chaque element du tableau passé en argument à la fonction
     // currentPost = le premier post du store dont l'id est égal à l'argument de l'url
-    const currentPost = id ? posts.find(storedPost => storedPost.id === parseInt(id)) : undefined
-    console.log("currentPost", currentPost)
-    const articleMedia = medias.find(media => currentPost?.featured_media === media.id)
+    const currentPage = id ? pages.find(storedPage => storedPage.id === parseInt(id)) : undefined
+    console.log("currentPost", currentPage)
+    const articleMedia = medias.find(media => currentPage?.featured_media === media.id)
 
-    if (!currentPost) {
+    if (!currentPage) {
         return <Loader/>
     }
 
@@ -82,9 +82,9 @@ function Post() {
                 <div className="position-absolute">
                     <GoBackBtn/>
                 </div>
-                <span>Publié le {new Date(currentPost.date).toLocaleDateString()}&nbsp;</span>
-                <span>par {users[currentPost.author - 1].name}</span>
-                <h1>{currentPost.title.rendered}</h1>
+                <span>Publié le {new Date(currentPage.date).toLocaleDateString()}&nbsp;</span>
+                <span>par {users[currentPage.author - 1].name}</span>
+                <h1>{currentPage.title.rendered}</h1>
             </header>
             <section className="grid pt-6">
                 <picture className="grid-col-12">
@@ -93,11 +93,11 @@ function Post() {
                 </picture>
                 <div
                     className="Post-content container-small pt-6"
-                    dangerouslySetInnerHTML={{__html: currentPost.content.rendered}}
+                    dangerouslySetInnerHTML={{__html: currentPage.content.rendered}}
                 />
             </section>
         </div>
     );
 }
 
-export {Post};
+export {Page};

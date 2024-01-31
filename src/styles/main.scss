@@ -1,0 +1,330 @@
+/* Variables */
+$black: #010101;
+$white: #FFFFFF;
+$grey: #282c34;
+
+$orange: #ED7F10;
+
+$primary: $orange;
+
+$unit: 8px;
+
+$maxWidthMobile: 60 * $unit; // 480px
+$maxWidthLaptop: 160 * $unit; // 1280px
+$maxWidthDesktop: 180 * $unit; // 1440px
+
+/* Reset */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: $black;
+  color: $white;
+  font-size: 10px;
+}
+
+
+/* Typography */
+
+body{
+  font-family: 'League Spartan', sans-serif;
+}
+
+h1 {
+  font-size: 3.2rem;
+  margin-bottom: 3 * $unit;
+}
+
+h2 {
+  font-size: 2.8rem;
+  margin-bottom: 2.5 * $unit;
+}
+
+h3 {
+  font-size: 2.2rem;
+  margin-bottom: 2 * $unit;
+}
+
+h4 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5 * $unit;
+}
+
+p, .body-1 {
+  font-size: 1.6rem;
+}
+
+.body-2 {
+  font-size: 1.4rem;
+}
+
+a {
+  text-decoration: none;
+
+  &:visited {
+    color: $primary;
+  }
+}
+
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  border: 1px solid #FFF;
+  border-radius: 4px;
+  color: white;
+  padding: 8px 16px;
+}
+
+ul {
+  list-style: none;
+}
+
+
+/* Layout */
+
+.flex {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+
+  &-column {
+    flex-direction: column;
+  }
+
+  &-gap {
+    &-2 {
+      gap: 2 * $unit;
+    }
+  }
+
+  &-grow {
+    flex-grow: 1;
+  }
+
+  &-end {
+    @extend .flex;
+    justify-content: flex-end;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+
+  &-col {
+    &-12 {
+      grid-column: span 12;
+    }
+  }
+}
+
+.container {
+  box-sizing: border-box;
+  padding: 0 16px;
+  margin: auto;
+  max-width: $maxWidthMobile;
+  width: 100%;
+  @media screen and (min-width: 768px) {
+    max-width: $maxWidthLaptop;
+  }
+  @media screen and (min-width: 768px) {
+    max-width: $maxWidthDesktop;
+  }
+}
+
+.container-small {
+  grid-column: 2 / 12;
+}
+
+
+/* Spacing */
+
+.p {
+  &-3 {
+    padding: 3 * $unit;
+  }
+
+  &-6 {
+    padding: 6 * $unit;
+  }
+
+  &-12 {
+    padding: 12 * $unit;
+  }
+}
+
+.pb {
+  &-3 {
+    padding-bottom: 3 * $unit;
+  }
+
+  &-6 {
+    padding-bottom: 6 * $unit;
+  }
+
+  &-12 {
+    padding-bottom: 12 * $unit;
+  }
+}
+
+.pt {
+  &-3 {
+    padding-top: 3 * $unit;
+  }
+
+  &-6 {
+    padding-top: 6 * $unit;
+  }
+
+  &-12 {
+    padding-top: 12 * $unit;
+  }
+}
+
+.py {
+  &-3 {
+    @extend .pb-3;
+    @extend .pt-3;
+  }
+
+  &-6 {
+    @extend .pb-6;
+    @extend .pt-6;
+  }
+
+  &-12 {
+    @extend .pb-12;
+    @extend .pt-12;
+  }
+}
+
+
+/* Utils */
+
+.position-absolute {
+  position: absolute;
+}
+
+
+/* Image */
+
+.Image {
+  height: auto;
+  max-width: 100%;
+}
+
+figure {
+  display: flex;
+  justify-content: center;
+  margin: 24px;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+/* Loader */
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* App */
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  text-align: center;
+
+  &-nav {
+    picture {
+      border-radius: 50%;
+      display: flex;
+      height: 48px;
+      overflow: hidden;
+      width: 48px;
+    }
+
+    a {
+      color: white;
+      font-size: 1.4rem;
+      text-decoration: none;
+    }
+  }
+}
+
+
+/* Posts list */
+
+.Posts-list {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 12px;
+  margin-top: 48px;
+  width: 100%;
+  @media screen and (min-width: 768px) {
+    grid-gap: 48px;
+  }
+}
+
+.Posts-list > * {
+  grid-column: span 12;
+  @media screen and (min-width: 768px) {
+    grid-column: span 6;
+  }
+  @media screen and (min-width: 1200px) {
+    grid-column: span 4;
+  }
+  @media screen and (min-width: 1920px) {
+    grid-column: span 3;
+  }
+}
+
+.Post-excerpt {
+  border: 1px solid #FFF;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 24px;
+}
+
+
+.Post-excerpt :nth-child(2) {
+  flex-grow: 1;
+}
+
+
+/* Single post */
+
+.Post-ctas-container {
+  position: absolute;
+}
+
+
+.Users-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px;
+  padding-top: 96px;
+}

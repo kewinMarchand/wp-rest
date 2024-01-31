@@ -5,12 +5,19 @@ import {ContextProvider} from "../contexts/store";
 import {BrowserRouter as Router} from "react-router-dom";
 
 // CSS
-import '../App.css';
+//import '../App.css';
+
+// SCSS
+import "../styles/main.scss";
 
 // Components
 import {Nav} from '../components/Nav'
 import {Footer} from '../components/Footer'
+
+// Lib pour les metas
 import {Helmet} from "react-helmet";
+
+// types
 import type {Data} from "../client/types/data";
 
 /* 
@@ -30,8 +37,6 @@ const PageLayout = ({children, data}: { children: ReactElement | ReactElement[],
                     <link rel="preconnect" href="https://fonts.googleapis.com"/>
                     <link rel="preconnect" href="https://fonts.gstatic.com"/>
                     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400&display=swap" rel="stylesheet"/>
-
-                    
                 </Helmet>
             }
             <div className="App">
@@ -39,7 +44,7 @@ const PageLayout = ({children, data}: { children: ReactElement | ReactElement[],
                     <Router>
                         <>
                             <Nav data={data}/>
-                            <main className="App-main">
+                            <main className="App-main container flex-grow pt-12">
                                 {children}
                             </main>
                             <Footer/>

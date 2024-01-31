@@ -1,22 +1,31 @@
 import React from 'react';
+import {get} from "../client/apiConsumer";
 
 function Roads(props: { data: { routes: {}; }; }) {
 
     console.log(props)
 
+    Object.keys(props.data.routes).forEach(road => {
+        get(road).then(r => console.log(r.data?.status, road, ':',  r))
+    })
+
     // template de la page des routes de l'api
     return (
         <div className="Roads">
-            <h3>Routes</h3>
-            <h4>Les routes disponibles:</h4>
-            {/* ici on se sert de la props data passée depuis App.tsx */}
-            {Object.keys(props.data.routes).map((route, i) => {
-                return (
-                    <div key={i}>
-                        <p>{route}</p>
-                    </div>
-                )
-            })}
+            <header>
+                <h1>Routes</h1>
+                <h2>Les routes disponibles:</h2>
+            </header>
+            <section className="flex flex-column flex-gap-2">
+                {/* ici on se sert de la props data passée depuis App.tsx */}
+                {Object.keys(props.data.routes).map((route, i) => {
+                    return (
+                        <div key={i}>
+                            <p>{route}</p>
+                        </div>
+                    )
+                })}
+            </section>
         </div>
     );
 }

@@ -11,17 +11,17 @@ export async function get(endpoint = ''): Promise<any> {
 }
 
 export async function getPages(): Promise<Page[]> {
-    return get("wp/v2/pages");
+    return get("/wp/v2/pages");
 }
 
 export async function getPosts(): Promise<Post[]> {
-    return get("wp/v2/posts");
+    return get("/wp/v2/posts");
 }
 
 export async function getMedias(): Promise<Media[]> {
-    return get("wp/v2/media")
+    return get("/wp/v2/media")
 }
 
 export async function getUsers(): Promise<User[]> {
-    return get("wp/v2/users")
+    return get("/wp/v2/users")
 }

@@ -1,13 +1,14 @@
 import React from 'react';
 
 function Image(props: any) {
+    const {source_url, height, width}  = props.image.media_details.sizes.full;
     return (
         <img
             className="Image"
-            src={props.image.media_details.sizes.full.source_url}
+            src={source_url}
+            height={height}
+            width={width}
             alt={props.image.title.rendered}
-            height={props.image.media_details.sizes.full.height}
-            width={props.image.media_details.sizes.full.width}
         />
     );
 }
