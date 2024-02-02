@@ -47,6 +47,14 @@ Pour lancer le server local.
 
 ---
 
+#### `yarn lint`	
+
+Pour lancer le linter/prettier.
+
+*A faire avant chaque demande de relecture.*
+
+---
+
 #### `git pull`
 
 Pour être à jour de la branche master.

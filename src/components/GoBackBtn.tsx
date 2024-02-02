@@ -1,21 +1,14 @@
-import React from 'react';
-import {useNavigate} from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function GoBackBtn() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    function goBack() {
-        navigate(-1)
-    }
+  function goBack() {
+    navigate(-1);
+  }
 
-    return (
-        <button
-            onClick={goBack}
-        >
-            ⟵&nbsp;&nbsp;Retour
-        </button>
-    );
+  return <button onClick={goBack}>⟵&nbsp;&nbsp;Retour</button>;
 }
-
 
 export { GoBackBtn };
