@@ -1,9 +1,9 @@
 /* Variables */
-$black: #010101;
-$white: #FFFFFF;
+$black: #161616;
+$white: #ffffff;
 $grey: #282c34;
 
-$orange: #ED7F10;
+$orange: #ed7f10;
 
 $primary: $orange;
 
@@ -26,16 +26,16 @@ html {
   font-size: 10px;
 }
 
-
 /* Typography */
 
-body{
-  font-family: 'League Spartan', sans-serif;
+body {
+  font-family: "League Spartan", sans-serif;
 }
 
 h1 {
-  font-size: 3.2rem;
+  font-size: 7rem;
   margin-bottom: 3 * $unit;
+  font-family: "Micro 5", sans-serif;
 }
 
 h2 {
@@ -53,7 +53,8 @@ h4 {
   margin-bottom: 1.5 * $unit;
 }
 
-p, .body-1 {
+p,
+.body-1 {
   font-size: 1.6rem;
 }
 
@@ -63,6 +64,7 @@ p, .body-1 {
 
 a {
   text-decoration: none;
+  color: #34a0c4;
 
   &:visited {
     color: $primary;
@@ -73,7 +75,7 @@ button {
   -webkit-appearance: none;
   -moz-appearance: none;
   background: transparent;
-  border: 1px solid #FFF;
+  border: 1px solid #fff;
   border-radius: 4px;
   color: white;
   padding: 8px 16px;
@@ -82,7 +84,6 @@ button {
 ul {
   list-style: none;
 }
-
 
 /* Layout */
 
@@ -139,7 +140,6 @@ ul {
 .container-small {
   grid-column: 2 / 12;
 }
-
 
 /* Spacing */
 
@@ -202,13 +202,11 @@ ul {
   }
 }
 
-
 /* Utils */
 
 .position-absolute {
   position: absolute;
 }
-
 
 /* Image */
 
@@ -227,7 +225,6 @@ img {
   max-width: 100%;
 }
 
-
 /* Loader */
 
 @media (prefers-reduced-motion: no-preference) {
@@ -244,7 +241,6 @@ img {
     transform: rotate(360deg);
   }
 }
-
 
 /* App */
 
@@ -267,10 +263,10 @@ img {
       color: white;
       font-size: 1.4rem;
       text-decoration: none;
+      text-transform: uppercase;
     }
   }
 }
-
 
 /* Posts list */
 
@@ -299,7 +295,7 @@ img {
 }
 
 .Post-excerpt {
-  border: 1px solid #FFF;
+  border: 1px solid #fff;
   border-radius: 4px;
   box-sizing: border-box;
   color: white;
@@ -309,11 +305,9 @@ img {
   padding: 24px;
 }
 
-
 .Post-excerpt :nth-child(2) {
   flex-grow: 1;
 }
-
 
 /* Single post */
 
@@ -321,10 +315,13 @@ img {
   position: absolute;
 }
 
-
 .Users-list {
   display: flex;
   flex-wrap: wrap;
   gap: 48px;
   padding-top: 96px;
+  text-transform: uppercase;
+}
+.Users-list img {
+  border-radius: 100%;
 }
